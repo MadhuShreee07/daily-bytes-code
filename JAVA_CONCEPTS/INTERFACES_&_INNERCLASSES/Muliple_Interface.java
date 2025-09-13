@@ -1,0 +1,32 @@
+
+
+
+interface mum{
+	abstract void shop();
+	abstract void eatt();
+}
+
+interface dad{
+	abstract void shop();
+	abstract void eatt();
+}
+
+class daughter implements mum,dad{
+	public void shop() {
+		System.out.println("shopping");
+	}
+	
+	public void eatt() {
+		System.out.println("eating");
+	}
+}
+
+public class Muliple_Interface {
+      public static void main(String args[]) {
+    	  daughter d1=new daughter();
+    	  d1.shop();
+    	  d1.eatt();
+      }
+} 
+
+//only interface can implement more than 1 classes

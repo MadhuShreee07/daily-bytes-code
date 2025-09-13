@@ -1,0 +1,35 @@
+
+class OuterClass {
+    int x = 10;
+
+    class MiddleClass {
+        int y = 5;
+
+        class InnerClass {
+            int z = 1;
+        }
+    }
+}
+
+public class Static_Innerclass {
+    public static void main(String[] args) {
+        OuterClass Out1 = new OuterClass();
+
+        OuterClass.MiddleClass Mid1 = Out1.new MiddleClass();
+
+        OuterClass.MiddleClass.InnerClass In1 = Mid1.new InnerClass();
+
+        System.out.println(In1.z + Mid1.y + Out1.x); // Outputs 16
+    }
+}
+
+
+
+
+
+
+/*Static Nested Classes
+Static Nested Classes are inner classes declared with the static keyword.
+They belong to the outer class but do not have access to the instance variables or methods
+of the outer class.
+They can access only static members of the outer class.*/

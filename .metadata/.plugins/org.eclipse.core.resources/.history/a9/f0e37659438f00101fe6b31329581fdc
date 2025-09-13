@@ -1,0 +1,27 @@
+
+
+abstract class computer{        //we cant create object for abstract classes
+	void turnon() {
+		System.out.println("turning on");
+	}
+}
+
+class HP extends computer{
+	
+}
+
+class DELL extends computer{
+	
+}
+
+public class Abstract_classes {
+       public static void main(String args[]) {
+    	   HP obj=new HP();
+    	   obj.turnon();
+    	   
+    	   DELL obj1=new  DELL();
+    	   obj1.turnon();
+       }
+       
+        
+}

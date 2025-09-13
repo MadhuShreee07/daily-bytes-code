@@ -1,0 +1,17 @@
+
+
+import java.util.*;
+
+class Hashset {
+    public static void main(String[] args) {
+        Set<String> set = new HashSet<>();
+        set.add("Jai");
+        set.add("Raj");
+        set.add("Raj"); // Duplicate ignored
+
+        for (String s : set) System.out.println(s);
+    }
+}
+
+//Unordered , unique elements
+//

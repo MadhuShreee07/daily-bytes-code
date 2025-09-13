@@ -1,0 +1,22 @@
+
+
+
+class sample{
+	  public void display() {
+    	  System.out.print("void function");
+      }
+      
+      public void display(int a) {
+    	  System.out.println(a);
+      }
+}
+
+
+public class Method_overriding {
+	public static void main(String args[]) {
+		sample obj1=new sample();
+		obj1.display();
+		obj1.display(5);
+	}
+}
+

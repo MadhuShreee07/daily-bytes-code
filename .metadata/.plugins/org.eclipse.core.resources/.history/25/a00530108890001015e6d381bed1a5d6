@@ -1,0 +1,11 @@
+
+import java.util.*;
+
+class Array_List {
+    public static void main(String[] args) {
+        List<String> c2 = new Array_List<>();
+        c2.add("Ajith");
+        c2.add(0, "Kumar"); // Insert at index 0
+        System.out.println(c2);
+    }
+}

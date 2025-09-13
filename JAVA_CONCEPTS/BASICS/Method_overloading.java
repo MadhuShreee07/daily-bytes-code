@@ -1,0 +1,22 @@
+
+class sample{
+	  public void display() {
+    	  System.out.println("void function");
+      }
+      
+      public void display(int a) {
+    	  System.out.println(a);
+      }
+}
+
+
+public class Method_overloading {
+	public static void main(String args[]) {
+		sample obj1=new sample();
+		obj1.display();
+		obj1.display(5);
+	}
+}
+
+//A class having 2 methods with the same name but different signature
+//THIS IS CALLED AS POLYMORPHISM

@@ -1,0 +1,29 @@
+
+
+class appl{
+	String str;
+	int num;
+	 
+	
+	public void setvalues(String str,int num) {
+		name=str;
+		rollno=num;
+	}
+	
+	 private void display() {                            //PRIVATE - Can be accessed only in that particular class
+		 System.out.println(name);
+	 }
+	                                       
+}
+
+
+public class Access_specifiers {
+            public static void main(String args[]) {
+            	appl app=new appl()
+            }
+}
+
+/*access specifiers
+1.public
+2.private
+3.protected  */

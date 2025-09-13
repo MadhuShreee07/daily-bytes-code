@@ -1,0 +1,76 @@
+
+
+class SharedData {
+    private int data;
+    private boolean hasValue = false;
+
+    // Producer method
+    public synchronized void produce(int value) {
+        while (hasValue) { // already has data, wait
+            try { wait(); } catch (InterruptedException e) {}
+        }
+        data = value;
+        System.out.println("Produced: " + data);
+        hasValue = true;
+        notify(); // wake up consumer
+    }
+
+    // Consumer method
+    public synchronized void consume() {
+        while (!hasValue) { // no data, wait
+            try { wait(); } catch (InterruptedException e) {}
+        }
+        System.out.println("Consumed: " + data);
+        hasValue = false;
+        notify(); // wake up producer
+    }
+}
+
+// Producer thread
+class Producer extends Thread {
+    SharedData sd;
+    Producer(SharedData sd) { this.sd = sd; }
+
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            sd.produce(i);
+            try { Thread.sleep(500); } catch (Exception e) {}
+        }
+    }
+}
+
+// Consumer thread
+class Consumer extends Thread {
+    SharedData sd;
+    Consumer(SharedData sd) { this.sd = sd; }
+
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            sd.consume();
+            try { Thread.sleep(500); } catch (Exception e) {}
+        }
+    }
+}
+
+// Main class
+public class Inter_Thread_Communication {
+    public static void main(String[] args) {
+        SharedData sd = new SharedData();
+        Producer p1 = new Producer(sd);
+        Consumer c1 = new Consumer(sd);
+
+        p1.start();
+        c1.start();
+    }
+}
+
+/*One thread may keep waiting blindly (sleep) without knowing if another thread has finished its job.
+This wastes CPU time.
+
+ Solution: wait(), notify(), notifyAll()
+
+wait() → thread pauses, releases lock, waits until notified.
+notify() → wakes up one waiting thread.
+notifyAll() → wakes up all waiting threads.
+
+This allows producer–consumer style communication.*/

@@ -1,0 +1,88 @@
+
+
+// LinkedListDeletion.java
+
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+public class Singly_LL_Deletion {
+     Node head;
+
+    // Delete from beginning
+    public void deleteFromBeginning() {
+        if (head == null) {
+            System.out.println("List is empty, cannot delete.");
+            return;
+        }
+        head = head.next;      //moves the head to the second node of the list
+    }
+
+    // Delete from end
+    public void deleteFromEnd() {
+          Node temp=head;
+          Node prev=head;
+        if (temp.next!= null) { // only one element
+           prev=temp;
+           temp=temp.next;
+        }
+        prev.next=null;
+       
+        
+    // Delete from specific position (0-based index)
+    public void deleteFromPosition(int position) {
+        int current=0;
+        Node temp=head;
+        while(temp.next!=null) {
+        	current++;
+        	if(current==position);
+        	      break;
+        	temp=temp.next;
+        }
+        temp.next=temp.next.next;
+
+    }
+
+    // Display list
+    public void display() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+
+    // Main for testing deletions
+    public static void main(String[] args) {
+        Singly_LL_Deletion list = new Singly_LL_Deletion();
+
+        // Build a sample list: 10 -> 20 -> 30 -> 40 -> 50
+        list.add(10);
+        list.insertAtEnd(20);
+        list.insertAtEnd(30);
+        list.insertAtEnd(40);
+        list.insertAtEnd(50);
+
+        System.out.println("Original List:");
+        list.display();
+
+        list.deleteFromBeginning();
+        System.out.println("After deleting from beginning:");
+        list.display();
+
+        list.deleteFromEnd();
+        System.out.println("After deleting from end:");
+        list.display();
+
+        list.deleteFromPosition(1); // delete element at index 1
+        System.out.println("After deleting from position 1:");
+        list.display();
+    }
+}

@@ -1,0 +1,21 @@
+
+// Define a parent class
+class Animall {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+public class Anynomous_class_Innerclas {
+    public static void main(String[] args) {
+        // Anonymous inner class extending Animal
+        Animall dog = new Animall() {
+            @Override
+            void sound() {
+                System.out.println("Dog barks");
+            }
+        };
+
+        dog.sound();
+    }
+}

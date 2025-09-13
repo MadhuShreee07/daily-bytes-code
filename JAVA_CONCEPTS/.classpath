@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="BASICS"/>
+	<classpathentry kind="src" path="INHERITANCE"/>
+	<classpathentry kind="src" path="EXCEPTION_HANDLING"/>
+	<classpathentry kind="src" path="ADVANCED"/>
+	<classpathentry kind="src" path="INTERFACES_&amp;_INNERCLASSES"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-23">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

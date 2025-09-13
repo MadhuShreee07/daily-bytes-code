@@ -1,0 +1,39 @@
+
+
+//2 PARENTS -> 1 CHILD
+class grandfather{
+	char gender='M';
+	
+	public void sleep() {
+	System.out.println("parent class");
+	}
+}
+
+
+class mother extends grandfather{
+	char gender='F';
+}
+
+
+class uncle extends grandfather{
+	char gender='M';
+}
+
+
+
+public class Multiple_Inheritance {
+     public static void main(String args[]) {
+    	 mother m1=new mother();
+    	 System.out.println(m1.gender);
+    	 m1.sleep();
+    	 
+    	 uncle u1=new uncle();
+    	 System.out.println(u1.gender);
+    	 u1.sleep();
+    	 
+     }
+}
+
+
+
+

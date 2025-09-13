@@ -1,0 +1,30 @@
+
+
+//GRANDFATHER -> FATHER -> SON
+
+class grandfather{
+	char gender='M';
+	
+	public void print() {
+		System.out.println("parent class");
+	}
+}
+
+class Mother extends grandfather{
+	char gender='F';
+}
+
+
+class Daughter extends Mother{
+	
+}
+
+
+
+public class Multilevel_Inheritance {
+       public static void main(String args) {
+    	   Daughter s=new Daughter();
+    	   System.out.println(s.gender);
+    	   s.print();
+       }
+}

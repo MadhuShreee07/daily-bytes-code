@@ -1,0 +1,26 @@
+
+import java.util.*;
+
+
+
+import java.util.*;
+
+class Collection {
+    public static void main(String[] args) {
+        Collection<Object> c1 = new ArrayList<>(); // collection of Objects
+        c1.add(5);        // int autoboxed to Integer
+        c1.add("Hello");  // String is fine
+        System.out.println(c1);
+    }
+}
+
+
+
+
+
+
+
+
+//A collection in Java is just a group of objects stored together (like a list of numbers, names, etc.).
+//Java provides the Collections Framework in java.util package with interfaces (List, Set, Map) and 
+//classes (ArrayList, HashSet, HashMap, etc.).

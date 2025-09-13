@@ -1,0 +1,35 @@
+
+//FATHER -> SON
+
+class Zoo{
+	int noofLegs=4;
+	
+	public void eat() {
+		System.out.println("i am eating food");
+	}
+	
+	public void walk() {
+		System.out.println("i am walking in road");
+	}
+}
+
+class monkey extends Zoo{
+	boolean canbark=true;          //Even if we dont create eat and walk methods it inherits from animal class
+	
+}
+
+public class Single_Inheritance {
+       public static void main(String args[]) {
+    	   Zoo obj=new Zoo();
+    	   System.out.println(obj.noofLegs);
+    	   obj.eat();
+    	   obj.walk();
+    	   
+    	   monkey obj1=new monkey();
+    	   System.out.println(obj1.noofLegs);
+    	   System.out.println(obj1.canbark);
+    	   obj.eat();
+    	   obj.walk();
+    	   
+       }
+}
