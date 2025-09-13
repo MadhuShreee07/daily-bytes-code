@@ -1,9 +1,0 @@
-
-public class Packages {
-
-}
-
-/*A package in Java is used to group related classes.
-Syntax:
-import package.name.Class; // Import a single class
-import package.name.*; // Import the whole package*/

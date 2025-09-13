@@ -1,4 +1,4 @@
-# Eclipse/IDE specific files
+# Eclipse/IDE files
 .classpath
 .project
 .settings/
@@ -9,6 +9,6 @@ bin/
 out/
 target/
 
-# Logs and temp
+# Logs/temp
 *.log
 *.tmp
