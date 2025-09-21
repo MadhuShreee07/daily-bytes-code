@@ -1,13 +1,12 @@
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-class Treenode {
+class Tnode {
     int val;
-    Treenode left, right;
+    Tnode left, right;
 
-    Treenode(int val) {
+    Tnode(int val) {
         this.val = val;
         left = right = null;
     }
@@ -16,39 +15,36 @@ class Treenode {
 public class Inorder_Traversal {
 
     // 1. Inorder Traversal (Left -> Root -> Right)
-    public List<Integer> inorderTraversal(Treenode root) {
-        List<Integer> inorder = new ArrayList<>();
-        Stack<Treenode> st = new Stack<>();
-        Treenode cur = root;
+    public List<Integer> inorderTraversal(Tnode root) {
+    	 List<Integer> inorder = new ArrayList<>();  //to store the printed values
+         Stack<Tnode> st = new Stack<>();
+         Tnode cur = root;
 
-        while (cur != null || !st.isEmpty()) {
-            if (cur != null) {
-                st.push(cur);
-                cur = cur.left;  // go to left subtree
-            } else {
-                cur = st.pop();   // process node
-                inorder.add(cur.val);
-                cur = cur.right;  // go to right subtree
-            }
-        }
-        return inorder;
-    }
+         while (true) {
+             if (cur != null) {      //If the node is not null
+                 st.push(cur);            //push into the stack
+                 cur = cur.left;         //Keep moving left        
+             } else {
+             	if(st.isEmpty()) {         //no nodes to travel
+             		break;
+             	}
+                 cur = st.pop();           //getting the top element
+                 inorder.add(cur.val);        //adding it to the list
+                 cur = cur.right;       //move right
+             }
+         }
+         return inorder;
+     }
+    public static void main(String[] args) {
+        // Build tree
+        Tnode root = new Tnode(1);
+        root.left = new Tnode(2);
+        root.right = new Tnode(3);
+        root.left.left = new Tnode(4);
+        root.left.right = new Tnode(5);
+        root.right.right = new Tnode(6);
 
-    public static void main(String args[]) {
-        // Constructing a sample tree:
-        //        1
-        //       / \
-        //      2   3
-        //     / \   \
-        //    4   5   6
-
-        Treenode root = new Treenode(1);
-        root.left = new Treenode(2);
-        root.right = new Treenode(3);
-        root.left.left = new Treenode(4);
-        root.left.right = new Treenode(5);
-        root.right.right = new Treenode(6);
-
+        // Run inorder traversal
         Inorder_Traversal it = new Inorder_Traversal();
         List<Integer> result = it.inorderTraversal(root);
 

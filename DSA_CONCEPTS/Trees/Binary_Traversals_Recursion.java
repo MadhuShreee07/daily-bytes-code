@@ -1,6 +1,9 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
+//size=total no of nodes
+//height= max no of edges
+//height=level-1
 class TreeNode {
     int data;
     TreeNode left, right;
@@ -12,7 +15,7 @@ class TreeNode {
     }
 }
 
-class Traversals_Recursion {
+class Binary_Traversals_Recursion {
     TreeNode root;
 
     // Preorder Traversal (Root -> Left -> Right)
@@ -57,9 +60,16 @@ class Traversals_Recursion {
             	queue.add(temp.right);    //Add right child to queue
         }
     }
+    
+    // DFS Search
+    boolean dfsSearch(TreeNode root, int key) {
+        if (root == null) return false;
+        if (root.data == key) return true;
+        return dfsSearch(root.left, key) || dfsSearch(root.right, key);
+    }
 
     public static void main(String[] args) {
-        Traversals_Recursion tree = new  Traversals_Recursion();
+        Binary_Traversals_Recursion tree = new  Binary_Traversals_Recursion();
 
         tree.root = new TreeNode(1);
         tree.root.left = new TreeNode(2);
@@ -84,5 +94,13 @@ class Traversals_Recursion {
         System.out.print("Level Order: ");
         tree.levelOrder(tree.root);
         System.out.println();
+        
+        // Testing DFS Search
+        int key = 5;
+        if (tree.dfsSearch(tree.root, key)) {
+            System.out.println(key + " found in tree (DFS)");
+        } else {
+            System.out.println(key + " not found in tree (DFS)");
+        }
     }
 }

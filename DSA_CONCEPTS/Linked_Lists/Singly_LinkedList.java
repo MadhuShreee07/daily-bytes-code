@@ -15,8 +15,8 @@ class LinkedList{
          //ADD AT BEGGINING
     public void addAtBeginning(int data) {
         Node newNode = new Node(data);
-        if(head==null) {           //if LL is empty
-        	head=newNode;
+        if(head==null) {               //if LL is empty
+        	head=newNode;       
         	return;
         }
         newNode.next = head;         //Link newnode to already existing 1st node
@@ -26,7 +26,7 @@ class LinkedList{
         //ADD AT POSTION
     public void addAtPosition(int pos, int data) {
     	 Node newNode = new Node(data);
-    	 int current=0;
+    	 int current=0;        //keeps the track of the index while traversing
     	 Node temp=head;
     	 while(temp.next!=null) {
     		 current++;
@@ -43,7 +43,7 @@ class LinkedList{
     public void addAtEnd(int data) {
         Node newNode = new Node(data);
         Node temp = head;
-        while (temp.next != null) {
+        while (temp.next != null) {      //keep on moving until temp reaches null
             temp = temp.next;
         }
         temp.next = newNode;     //the moment temp comes out of the loop we link newnode to the temp
@@ -53,53 +53,43 @@ class LinkedList{
 
     // DELETE BY POSITION
     public void deleteByPosition(int pos) {
-        if (head == null) return;            //list is empty
- 
-        if (pos == 0) {                    //deleting the head node
-            head = head.next;
-            return;
-        }
-         Node temp = head;
-        int count = 0;
+            if (head == null) return; 
 
-        // Traverse until the node before the target
-        while (temp != null && count < pos - 1) {
-            temp = temp.next;
-            count++;
+            if (pos == 0) { // delete head
+                head = head.next;
+                return;
+            }
+
+            Node temp = head;
+            for (int i = 0; temp != null && i < pos - 1; i++) {
+                temp = temp.next;
+            }
+
+            if (temp == null || temp.next == null) return; // position out of range
+
+            temp.next = temp.next.next; // unlink the node
         }
-        
-        if (temp == null || temp.next == null) {
-            System.out.println("Invalid position!");       //position is invalid
-            return;
+
+
+     //delete by value(all occurances)
+    public void deleteByValue(int value) {
+        while (head != null && head.data == value) {      //head contains the value to be deleted
+            head = head.next; // unlink the matching head node
         }
-        temp.next = temp.next.next;        //skip the node
+
+      
+        Node temp = head;
+
+        // Traverse until the second last node
+        while (temp != null && temp.next != null) {
+            if (temp.next.data == value) {
+                temp.next = temp.next.next;      //if next node holds the value,skip it
+            } else {
+                temp = temp.next;            //otherwise move to the next node
+            }
+        }
     }
 
-
-
-    //DELETE BY VALUE (all occurance)
-    public void deleteByValue(int value) {
-        if (head == null) {
-        	System.out.println("List is empty");
-        }
-        
-        if (head.data == value) {       //1st element is the element we need to delete
-            head = head.next;
-            return;
-        }
-        
-        Node temp = head;
-        while (temp != null && temp.next != null) {
-              if (temp.next == null) {
-                   System.out.println("Value not found!");
-                  return;
-         }
-              else {
-            	  temp=temp.next;
-              }
-        }
-   }
-    
     
        //REVERSE THE LL
     public void reverse() {
@@ -181,7 +171,7 @@ class LinkedList{
     }
 
      
-       //DISPLAY THE LL
+       //DISPLAY THE LL by while loop
     public void Display() {
         Node temp = head;
         while (temp != null) {
@@ -189,6 +179,12 @@ class LinkedList{
             temp = temp.next;
         }
         System.out.println("null");
+    }
+    
+    public void Display2() {
+    	for(Node i=head;i.next!=null;i=i.next) {
+    		System.out.println(i.data);
+    	}
     }
 }
 
@@ -233,6 +229,7 @@ class Singly_LinkedList {
             list.reverse();
             System.out.println("After reversing the list:");
             list.Display();
+            list.Display2();
         }
     }
 

@@ -21,7 +21,7 @@ class Pair {
     }
 }
 
-public class preInpost_Traversal {
+public class Binary_preInpost_Traversal {
 	
     public void preInPostTraversal(Treeenode root) {
         if (root == null) return;
@@ -80,7 +80,7 @@ public class preInpost_Traversal {
         root.left.right = new Treeenode(5);
         root.right.right = new Treeenode(6);
 
-        preInpost_Traversal sol = new preInpost_Traversal();
+        Binary_preInpost_Traversal sol = new Binary_preInpost_Traversal();
         sol.preInPostTraversal(root);
     }
 }

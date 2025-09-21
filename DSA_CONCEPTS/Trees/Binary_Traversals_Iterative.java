@@ -10,7 +10,7 @@ class Treenode {
     }
 }
 
-public class Traversals_Iterative {
+public class Binary_Traversals_Iterative {
 
     // 1. Preorder Traversal (Root -> Left -> Right)
     public List<Integer> preorderTraversal(Treenode root) {
@@ -108,7 +108,7 @@ public class Traversals_Iterative {
         root.left.right = new Treenode(5);
         root.right.right = new Treenode(6);
 
-        Traversals_Iterative t = new Traversals_Iterative();
+        Binary_Traversals_Iterative t = new Binary_Traversals_Iterative();
 
         System.out.println("Preorder:  " + t.preorderTraversal(root));        // [1, 2, 4, 5, 3, 6]
         System.out.println("Inorder:   " + t.inorderTraversal(root));         // [4, 2, 5, 1, 3, 6]

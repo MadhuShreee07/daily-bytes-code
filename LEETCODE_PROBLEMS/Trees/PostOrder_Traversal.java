@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-class Treenode {
+class Treeenode {
     int val;
-    Treenode left, right;
+    Treeenode left, right;
 
-    Treenode(int val) {
+    Treeenode(int val) {
         this.val = val;
         left = right = null;
     }
@@ -14,17 +14,17 @@ class Treenode {
 
 public class PostOrder_Traversal {
 
-    // Postorder Traversal using Two Stacks (Left -> Right -> Root)
-    public List<Integer> postorderTraversalTwoStacks(Treenode root) {
+    
+    public List<Integer> postorderTraversalTwoStacks(Treeenode root) {
         List<Integer> postorder = new ArrayList<>();
         if (root == null) return postorder;
 
-        Stack<Treenode> st1 = new Stack<>();
-        Stack<Treenode> st2 = new Stack<>();
+        Stack<Treeenode> st1 = new Stack<>();
+        Stack<Treeenode> st2 = new Stack<>();
         st1.push(root);
 
         while (!st1.isEmpty()) {
-            Treenode node = st1.pop();
+            Treeenode node = st1.pop();
             st2.push(node);
 
             if (node.left != null) st1.push(node.left);
@@ -40,12 +40,12 @@ public class PostOrder_Traversal {
     public static void main(String args[]) {
        
 
-        Treenode root = new Treenode(1);
-        root.left = new Treenode(2);
-        root.right = new Treenode(3);
-        root.left.left = new Treenode(4);
-        root.left.right = new Treenode(5);
-        root.right.right = new Treenode(6);
+        Treeenode root = new Treeenode(1);
+        root.left = new Treeenode(2);
+        root.right = new Treeenode(3);
+        root.left.left = new Treeenode(4);
+        root.left.right = new Treeenode(5);
+        root.right.right = new Treeenode(6);
 
         PostOrder_Traversal pt = new PostOrder_Traversal();
         List<Integer> result = pt.postorderTraversalTwoStacks(root);
