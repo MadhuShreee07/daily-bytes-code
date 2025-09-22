@@ -14,10 +14,10 @@ class LinkedList{
 
          //ADD AT BEGGINING
     public void addAtBeginning(int data) {
-        Node newNode = new Node(data);
+        Node newNode = new Node(data);     //CREATING A NEW NODE
         if(head==null) {               //if LL is empty
         	head=newNode;       
-        	return;
+        	return;           //exit here
         }
         newNode.next = head;         //Link newnode to already existing 1st node
         head = newNode;              //first node is always denoted by head
@@ -55,7 +55,7 @@ class LinkedList{
     public void deleteByPosition(int pos) {
             if (head == null) return; 
 
-            if (pos == 0) { // delete head
+            if (pos == 0) {         // delete head
                 head = head.next;
                 return;
             }
@@ -65,9 +65,10 @@ class LinkedList{
                 temp = temp.next;
             }
 
-            if (temp == null || temp.next == null) return; // position out of range
-
-            temp.next = temp.next.next; // unlink the node
+            if (temp == null || temp.next == null) return; // position out of range //there's np npde at pos
+                                                              //in both cases just return without doing anything
+              
+            temp.next = temp.next.next;    // unlink the node
         }
 
 
@@ -90,7 +91,6 @@ class LinkedList{
         }
     }
 
-    
        //REVERSE THE LL
     public void reverse() {
         Node prev = null;
@@ -102,7 +102,7 @@ class LinkedList{
             prev = current;
             current = next;
         }
-        head = prev;
+            head = prev;
     }
     
     

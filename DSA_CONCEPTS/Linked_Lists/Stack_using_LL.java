@@ -26,7 +26,7 @@ public class Stack_using_LL {
     }
 
     int pop() {
-        int number = head.val;
+        int number = head.val;   //store the number in the head
 
         
         head = head.next;      //move the head to next node
