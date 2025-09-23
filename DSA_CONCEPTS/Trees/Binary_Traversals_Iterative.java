@@ -76,27 +76,36 @@ public class Binary_Traversals_Iterative {
     }
 
     // 4. Postorder Traversal using One Stack (Left -> Right -> Root)
-    public List<Integer> postorderTraversalOneStack(Treenode root) {
-        List<Integer> postorder = new ArrayList<>();
+    public static List<Integer> postorderTraversalOneStack(Treenode root) {
+        List<Integer> post = new ArrayList<>();
+        if (root == null) return post;
+
         Stack<Treenode> st = new Stack<>();
-        Treenode cur = root, lastVisited = null;
+        Treenode cur = root;
 
         while (cur != null || !st.isEmpty()) {
             if (cur != null) {
                 st.push(cur);
-                cur = cur.left;
+                cur = cur.left; // go left
             } else {
-                Treenode peekNode = st.peek();
-                if (peekNode.right != null && lastVisited != peekNode.right) {
-                    cur = peekNode.right;
+                Treenode temp = st.peek().right;
+                if (temp == null) {
+                    temp = st.pop();
+                    post.add(temp.val);
+
+                    // keep popping while popped node is right child of stack top
+                    while (!st.isEmpty() && temp == st.peek().right) {
+                        temp = st.pop();
+                        post.add(temp.val);
+                    }
                 } else {
-                    postorder.add(peekNode.val);
-                    lastVisited = st.pop();
+                    cur = temp; // move to right child
                 }
             }
         }
-        return postorder;
+        return post;
     }
+       
 
    
     public static void main(String[] args) {
@@ -110,9 +119,9 @@ public class Binary_Traversals_Iterative {
 
         Binary_Traversals_Iterative t = new Binary_Traversals_Iterative();
 
-        System.out.println("Preorder:  " + t.preorderTraversal(root));        // [1, 2, 4, 5, 3, 6]
-        System.out.println("Inorder:   " + t.inorderTraversal(root));         // [4, 2, 5, 1, 3, 6]
-        System.out.println("Postorder (2 stacks): " + t.postorderTraversalTwoStacks(root)); // [4, 5, 2, 6, 3, 1]
-        System.out.println("Postorder (1 stack):  " + t.postorderTraversalOneStack(root));  // [4, 5, 2, 6, 3, 1]
+        System.out.println("Preorder:  " + t.preorderTraversal(root));        
+        System.out.println("Inorder:   " + t.inorderTraversal(root));        
+        System.out.println("Postorder (2 stacks): " + t.postorderTraversalTwoStacks(root)); 
+        System.out.println("Postorder (1 stack):  " + t.postorderTraversalOneStack(root));  
     }
 }

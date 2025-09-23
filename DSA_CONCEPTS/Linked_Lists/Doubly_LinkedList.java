@@ -75,7 +75,7 @@ public class Doubly_LinkedList {
             if (current == position) break;
             temp = temp.next;
         }
-       // if (temp == null || temp.next == null) return;
+        if (temp == null || temp.next == null) return;
         temp.next.next.prev = temp;
         temp.next = temp.next.next;
     }
