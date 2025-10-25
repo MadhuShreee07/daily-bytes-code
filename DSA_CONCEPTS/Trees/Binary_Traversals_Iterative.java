@@ -12,7 +12,7 @@ class Treenode {
 
 public class Binary_Traversals_Iterative {
 
-    // 1. Preorder Traversal (Root -> Left -> Right)
+    // 1. Preorder Traversal (Root -> Left -> Right)    TC:O(n) SC:O(H) - height of the tree
     public List<Integer> preorderTraversal(Treenode root) {
         List<Integer> preorder = new ArrayList<>();  //to store the printed values
         if (root == null) return preorder;     //Tree is Empty
@@ -48,7 +48,7 @@ public class Binary_Traversals_Iterative {
                 inorder.add(cur.val);        //adding it to the list
                 cur = cur.right;       //move right
             }
-        }
+        } 
         return inorder;
     }
 
@@ -69,7 +69,7 @@ public class Binary_Traversals_Iterative {
             if (node.right != null) st1.push(node.right);
         }
 
-        while (!st2.isEmpty()) {         //pop out every element from stack 2 nd put it in stack 1
+        while (!st2.isEmpty()) {         //pop out every element from stack 2nd put it in List(reversing)
             postorder.add(st2.pop().val);
         }
         return postorder;

@@ -11,7 +11,6 @@ class Treeenode {
     }
 }
 
-// Helper Pair class to store node and its traversal state
 class Pair {
     Treeenode node;
     int num;

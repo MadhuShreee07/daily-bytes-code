@@ -1,14 +1,11 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
-//size=total no of nodes
-//height= max no of edges
-//height=level-1
-class TreeNode {
+class TTreeNode {
     int data;
-    TreeNode left, right;
+    TTreeNode left, right;
 
-    public TreeNode(int data) {
+    public TTreeNode(int data) {
         this.data = data;
         this.left = null;
         this.right = null;
@@ -16,10 +13,10 @@ class TreeNode {
 }
 
 class Binary_Traversals_Recursion {
-    TreeNode root;
+    TTreeNode root;
 
     // Preorder Traversal (Root -> Left -> Right)
-    void preorder(TreeNode root) {
+    void preorder(TTreeNode root) {
         if (root == null) return;
         System.out.print(root.data + " ");
         preorder(root.left);
@@ -27,7 +24,7 @@ class Binary_Traversals_Recursion {
     }
 
     // Inorder Traversal (Left -> Root -> Right)
-    void inorder(TreeNode root) {
+    void inorder(TTreeNode root) {
         if (root == null) return;
         inorder(root.left);
         System.out.print(root.data + " ");
@@ -35,7 +32,7 @@ class Binary_Traversals_Recursion {
     }
 
     // Postorder Traversal (Left -> Right -> Root)
-    void postorder(TreeNode root) {
+    void postorder(TTreeNode root) {
         if (root == null) return;
         postorder(root.left);
         postorder(root.right);
@@ -43,41 +40,76 @@ class Binary_Traversals_Recursion {
     }
 
     // Level Order Traversal (BFS)
-    void levelOrder(TreeNode root) {
-           Queue<TreeNode> queue = new LinkedList<>();
-       
-            queue.add(root);  //start with the root node
+    void levelOrder(TTreeNode root) {
+        Queue<TTreeNode> queue = new LinkedList<>();
 
-        while (!queue.isEmpty()) {    //Run the loop till queue is not empty 
-            TreeNode temp = queue.poll();
-            
-            System.out.print(temp.data + " ");   //print the value
+        queue.add(root); //start with the root node
 
-            if (temp.left != null) 
-            	queue.add(temp.left);     //Add left child to queue
-            
-            if (temp.right != null) 
-            	queue.add(temp.right);    //Add right child to queue
+        while (!queue.isEmpty()) { //Run the loop till queue is not empty 
+            TTreeNode temp = queue.poll(); //removes and stores the element in temp
+
+            System.out.print(temp.data + " "); //print the value
+
+            if (temp.left != null)
+                queue.add(temp.left); //Add left child to queue
+
+            if (temp.right != null)
+                queue.add(temp.right); //Add right child to queue
         }
     }
-    
-    // DFS Search
-    boolean dfsSearch(TreeNode root, int key) {
-        if (root == null) return false;
-        if (root.data == key) return true;
-        return dfsSearch(root.left, key) || dfsSearch(root.right, key);
+
+    // Level Order Insertion 
+    void insertLevelOrder(TTreeNode temp, int key) {
+        if (temp == null) {
+            root = new TTreeNode(key);
+            return;
+        }
+
+        Queue<TTreeNode> q = new LinkedList<>();
+        q.add(temp);
+
+        // Do level order traversal until we find an empty place
+        while (!q.isEmpty()) {
+            temp = q.peek();
+            q.remove();
+
+            if (temp.left == null) {
+                temp.left = new TTreeNode(key);
+                break;
+            } else
+                q.add(temp.left);
+
+            if (temp.right == null) {
+                temp.right = new TTreeNode(key);
+                break;
+            } else
+                q.add(temp.right);
+        }
+    }
+
+    // search an element
+    public static TTreeNode search(TTreeNode root, int element) {
+        if (root != null) {
+            if (root.data == element) {
+                System.out.println("Element " + element + " found!");
+            } else {
+                search(root.left, element);
+                search(root.right, element);
+            }
+        }
+        return root;
     }
 
     public static void main(String[] args) {
-        Binary_Traversals_Recursion tree = new  Binary_Traversals_Recursion();
+        Binary_Traversals_Recursion tree = new Binary_Traversals_Recursion();
 
-        tree.root = new TreeNode(1);
-        tree.root.left = new TreeNode(2);
-        tree.root.right = new TreeNode(3);
-        tree.root.left.left = new TreeNode(4);
-        tree.root.left.right = new TreeNode(5);
-        tree.root.right.left = new TreeNode(6);
-        tree.root.right.right = new TreeNode(7);
+        tree.root = new TTreeNode(1);
+        tree.root.left = new TTreeNode(2);
+        tree.root.right = new TTreeNode(3);
+        tree.root.left.left = new TTreeNode(4);
+        tree.root.left.right = new TTreeNode(5);
+        tree.root.right.left = new TTreeNode(6);
+        tree.root.right.right = new TTreeNode(7);
 
         System.out.print("Preorder: ");
         tree.preorder(tree.root);
@@ -94,14 +126,15 @@ class Binary_Traversals_Recursion {
         System.out.print("Level Order: ");
         tree.levelOrder(tree.root);
         System.out.println();
-        
-        // Testing DFS Search
+
         int key = 5;
-        if (tree.dfsSearch(tree.root, key)) {
-            System.out.println(key + " found in tree (DFS)");
-        } else {
-            System.out.println(key + " not found in tree (DFS)");
-        }
+        System.out.println("\nSearching for " + key + "...");
+        search(tree.root, key);
+
+        System.out.println("\nInserting 8 using Level Order Insertion...");
+        tree.insertLevelOrder(tree.root, 8);
+
+        System.out.print("Level Order after insertion: ");
+        tree.levelOrder(tree.root);
     }
 }
-//RETURN it will go to next line

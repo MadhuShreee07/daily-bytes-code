@@ -1,7 +1,6 @@
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
-// Definition for a binary tree node
+
 class TreeNodde {
     int val;
     TreeNodde left;

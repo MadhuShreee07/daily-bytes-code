@@ -1,3 +1,6 @@
+
+
+//IN BINARY SEARCH TREE INORDER TRAVERSAL - SORTED ELEMENTS
 class BSTNode {
     int key;
     BSTNode left, right;
@@ -47,7 +50,7 @@ public class Binary_search_tree {
         return root;
     }
 
-    // (min value in subtree)
+    // min value in subtree
     static int minValue(BSTNode root) {
         int minv = root.key;
         while (root.left != null) {
